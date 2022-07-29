@@ -1,0 +1,78 @@
+<div class="section mt-5">
+  <div class="columns mt-5">
+    <div class="column">
+      <tui-island size="l" [hoverable]="true" class="product-card">
+        <p class="tui-island__category" style="color: white;">Creditors</p>
+          <div class="tui-island__content">
+            <div class="tui-island__figure">
+                <span>
+                  <i style="font-size: 48px;">
+                    <fa-icon [icon]="faCreditCard"></fa-icon>
+                  </i>
+                </span>
+            </div>
+            <div>
+              <h3 class="tui-island__title night"
+                [countUp]="100" [options]="{ duration: 5 }"></h3>
+                <p class="tui-island__paragraph tui-island__paragraph_link">
+                  <button tuiButton type="button" size="s" icon="tuiIconInfo"
+                  routerLink="/admin/daftar-layanan">More Info</button>
+              </p>
+            </div>
+          </div>
+      </tui-island>
+    </div>
+    <div class="column">
+      <tui-island size="l" [hoverable]="true" class="customer-card">
+        <p class="tui-island__category" style="color: white;">Products</p>
+          <div class="tui-island__content">
+            <div class="tui-island__figure">
+                <span>
+                  <i style="font-size: 48px;">
+                    <fa-icon [icon]="faCubes"></fa-icon>
+                  </i>
+                </span>
+            </div>
+            <div>
+                <h3 class="tui-island__title night"
+                [countUp]="200" [options]="{ duration: 5 }"></h3>
+                <p class="tui-island__paragraph tui-island__paragraph_link">
+                  <button tuiButton type="button" size="s" icon="tuiIconInfo"
+                  routerLink="/admin/hasil-pelayanan">More Info</button>
+                </p>
+            </div>
+          </div>
+      </tui-island>
+    </div>
+    <div class="column">
+      <tui-island size="l" [hoverable]="true" class="transaction-card">
+        <p class="tui-island__category" style="color: white;">Total Survey</p>
+          <div class="tui-island__content">
+            <div class="tui-island__figure">
+                <span>
+                  <i style="font-size: 48px;">
+                    <fa-icon [icon]="faPollH"></fa-icon>
+                  </i>
+                </span>
+            </div>
+            <div>
+                <h3 class="tui-island__title night"
+                [countUp]="300" [options]="{ duration: 5 }"></h3>
+                <p class="tui-island__paragraph tui-island__paragraph_link">
+                  <button tuiButton type="button" size="s" icon="tuiIconInfo"
+                  routerLink="/admin/survey-kepuasan">More Info</button>
+                </p>
+            </div>
+          </div>
+      </tui-island>
+    </div>
+  </div>
+  <div class="card">
+    <div style="display: flex; justify-content: center;">
+      <ngx-charts-pie-chart
+      (window:resize)="onResize($event)"
+      [results]="pieChartData" [legend]="true"
+    [view]="chartView"></ngx-charts-pie-chart>
+    </div>
+  </div>
+</div>

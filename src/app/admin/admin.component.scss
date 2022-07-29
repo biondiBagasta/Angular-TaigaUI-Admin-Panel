@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700&display=swap');
+
+
+.profile {
+  position: absolute;
+  right: 2%;
+}
+
+.profile-img {
+  height: 48px;
+  width: 48px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 0 14px 0 12px;
+  background: #1d1b31;
+  margin-top: 5px;
+}
+
+.name-text {
+  font-family: 'Lexend', sans-serif;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.job-text {
+  font-family: 'Lexend', sans-serif;
+  color: black;
+  font-weight: 300;
+  font-size: 18px;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lexend-family {
+  font-family: 'Lexend', sans-serif;
+}
+
+.dropdown-user {
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  max-width: 300px;
+  position: absolute;
+  z-index: 10;
+  border-radius: 10px;
+  top: 55px;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: white;
+}
+
+.dropdown-content {
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-image {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: #bdc3c7;
+  border: 1px solid #11101d;
+  overflow: hidden;
+}
+
+.name-dropdown-text {
+  font-family: 'Lexend', sans-serif;
+  color: black;
+  font-weight: 500;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dropdown-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.header-user {
+  display: flex;
+  justify-content: space-between;
+  overflow: auto;
+  cursor: pointer;
+  align-items: center;
+  transition: margin-right cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
+}

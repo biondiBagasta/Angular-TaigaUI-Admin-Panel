@@ -1,0 +1,90 @@
+<div [class]="openMenu == true ? 'sidebar' : 'sidebar close'">
+  <div class="logo-details">
+    <img src="https://res.cloudinary.com/bion/image/upload/v1640174485/angular-256_ch8ggd.png"
+    class="logo-image" />
+    <span class="logo_name">DASHBOARD</span>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a routerLinkActive="menu-active" routerLink="/admin/dashboard">
+        <i>
+          <fa-icon [icon]="faGaugeHigh"></fa-icon>
+        </i>
+        <span class="link_name lexend-family">Dashboard</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name lexend-family" routerLink="/admin/dashboard">Dashboard</a></li>
+      </ul>
+    </li>
+    <li>
+      <a routerLinkActive="menu-active" routerLink="/admin/users">
+        <i>
+          <fa-icon [icon]="faUsers"></fa-icon>
+        </i>
+        <span class="link_name lexend-family">Users</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name lexend-family" routerLink="/admin/users">Users</a></li>
+      </ul>
+    </li>
+    <li class="dropdown-list" [class.showMenu]="dropdownMenu1 == true" (click)="toggleDropdownMenu1()">
+      <div class="iocn-link">
+        <a>
+          <i>
+            <fa-icon [icon]="faLocationDot"></fa-icon>
+          </i>
+          <span class="link_name">Region</span>
+        </a>
+        <i class='arrow'>
+          <fa-icon [icon]="faAngleDown"></fa-icon>
+        </i>
+      </div>
+      <ul class="sub-menu">
+        <li><a>Province</a></li>
+        <li><a>City</a></li>
+        <li><a>Districts</a></li>
+        <li><a>Village</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<section class="home-section">
+  <div class="home-content">
+    <i class='bx-menu' (click)="toggleSidebar()">
+      <fa-icon [icon]="faBars"></fa-icon>
+    </i>
+    <div class="header-user" [style.margin-right]="currentWidth <= 600 ? '18%' : marginRight + '%'"
+    (click)="toggleDropdown()">
+      <div class="mr-2">
+        <tui-avatar [avatarUrl]="'/assets/default.jfif'"></tui-avatar>
+      </div>
+      <div class="name-text" *ngIf="currentWidth >= 500">
+        Biondi Bagasta Wiko Putra
+      </div>
+    </div>
+    <div class="dropdown-user animate__animated animate__flipInX" style="transition: margin-right cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;"
+    *ngIf="dropdown == true" [style.margin-right]="currentWidth <= 600 ? '18%' : marginRight + '%'">
+      <div class="dropdown-content">
+        <tui-avatar [avatarUrl]="'/assets/default.jfif'" [size]="'xxl'" class="mt-3"></tui-avatar>
+      </div>
+      <div class="dropdown-content mt-2">
+        <div class="name-dropdown-text">
+          Biondi Bagasta Wiko Oytra
+        </div>
+      </div>
+      <div class="dropdown-content mt-1">
+        <div class="job-text" style="color: black;">
+          SUPER ADMIN
+        </div>
+      </div>
+      <div class="dropdown-button mt-5">
+        <button tuiButton size="m" appearance="komaru"
+        (click)="dropdown = false"
+        icon="tuiIconUser">Profile</button>
+        <button tuiButton size="m" appearance="red-gelap" (click)="logout()"
+        icon="tuiIconExternal">Logout</button>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</section>

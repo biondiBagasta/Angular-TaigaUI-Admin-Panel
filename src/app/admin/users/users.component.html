@@ -1,0 +1,230 @@
+<div class="section mt-5">
+  <section class="hero is-link">
+    <div class="hero-body">
+      <div class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <h1 class="tui-text__h1" style="line-height: 35px;">Users</h1>
+          </div>
+        </div>
+        <div class="level-right">
+          <div class="level-item">
+            <ul class="breadcrumb">
+              <li><a routerLink="/admin">Home</a></li>
+              <li>Users</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="card" style="overflow-x: scroll;">
+    <header class="card-header">
+      <p class="card-header-title">
+        <button tuiButton type="button" icon="tuiIconPlusLarge" appearance="info" (click)="openCreateDialog(create)">
+          Add
+        </button>
+      </p>
+      <div class="card-header-icon">
+        <tui-input tuiTextfieldExampleText="Press Enter..." icon="tuiIconSearch" iconAlign="left"
+        [formControl]="searchField" (keyup.enter)="search()">
+          Search Users Data...
+        </tui-input>
+      </div>
+    </header>
+    <div class="card-content">
+      <tui-loader [showLoader]="isLoadingData == true" [overlay]="true" [size]="'xxl'"
+      [textContent]="'Loading the data...'">
+      <table class="tui-table tui-table_font-size_l">
+        <tbody>
+          <tr class="tui-table__tr">
+            <th class="tui-table__th">
+              Photo
+            </th>
+            <th class="tui-table__th">
+              Full Name
+            </th>
+            <th class="tui-table__th">
+              Username
+            </th>
+            <th class="tui-table__th">
+              Email
+            </th>
+            <th class="tui-table__th">
+              Address
+            </th>
+            <th class="tui-table__th">
+              Phone Number
+            </th>
+            <th class="tui-table__th">
+              Action
+            </th>
+          </tr>
+          <tr class="tui-table__tr" *ngFor="let data of users">
+            <td class="tui-table__td">
+              <tui-avatar [avatarUrl]="data.photo" (click)="openDetailPhotoDialog(photo, data.photo)"></tui-avatar>
+            </td>
+            <td class="tui-table__td">
+              {{ data.full_name }}
+            </td>
+            <td class="tui-table__td">
+              {{ data.username }}
+            </td>
+            <td class="tui-table__td">
+              {{ data.email }}
+            </td>
+            <td class="tui-table__td">
+              {{ data.address }}
+            </td>
+            <td class="tui-table__td">
+              {{ data.phone_number}}
+            </td>
+            <td>
+              <button tuiIconButton type="button" class="tui-space_right-3" icon="tuiIconEdit" appearance="detail"
+              size="s"></button>
+              <button tuiIconButton type="button" icon="tuiIconTrash" size="s" appearance="danger"></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <tui-notification *ngIf="users.length == 0">
+        No Data to Show
+      </tui-notification>
+      <br/>
+      &nbsp;
+      <tui-pagination [length]="usersLength" [index]="0"
+      (indexChange)="search($event)"></tui-pagination>
+      </tui-loader>
+    </div>
+  </div>
+</div>
+
+<ng-template #create>
+  <tui-loader [showLoader]="isLoadingCreate" [size]="'xxl'" [overlay]="true" [textContent]="'Creating in Progress....'">
+    <br/>
+    <form [formGroup]="createForm" (ngSubmit)="submitCreateForm()">
+      <div class="tui-form__row">
+        <tui-input tuiTextfieldExampleText="Username" formControlName="username"
+        icon="tuiIconCard">
+          Username
+          <span class="tui-required"></span>
+        </tui-input>
+        <tui-field-error formControlName="username"></tui-field-error>
+      </div>
+      <div class="tui-form__row">
+        <tui-input tuiTextfieldExampleText="Email" formControlName="email" icon="tuiIconMail">
+          Email
+          <span class="tui-required"></span>
+        </tui-input>
+        <tui-field-error formControlName="email"></tui-field-error>
+      </div>
+      <div class="tui-form__row">
+        <tui-input tuiTextfieldExampleText="Full Name" formControlName="full_name" icon="tuiIconUser">
+          Full name
+          <span class="tui-required"></span>
+        </tui-input>
+        <tui-field-error formControlName="full_name"></tui-field-error>
+      </div>
+      <div class="tui-form__row">
+        <tui-input tuiTextfieldExampleText="Address" formControlName="address" icon="tuiIconPin">
+          Address
+          <span class="tui-required"></span>
+        </tui-input>
+        <tui-field-error formControlName="address"></tui-field-error>
+      </div>
+      <div class="tui-form__row">
+        <tui-input tuiTextfieldExampleText="Nomor HP" formControlName="phone_number" icon="tuiIconCallIn">
+          Nomor HP
+          <span class="tui-required"></span>
+        </tui-input>
+        <tui-field-error formControlName="phone_number"></tui-field-error>
+      </div>
+      <div class="tui-form__row">
+        <tui-input-file [formControl]="fileControl"
+        (change)="selectFile()" [accept]="'image/*'"></tui-input-file>
+      </div>
+      <div class="tui-form__buttons">
+        <button tuiButton class="tui-form__button tui-space_right-3" type="submit" size="m" icon="tuiIconCheckLarge"
+        [disabled]="!editForm.valid">
+          Submit
+        </button>
+        <button tuiButton type="button" size="m" icon="tuiIconRemoveLarge" appearance="warning" (click)="closeCreateDialog()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </tui-loader>
+</ng-template>
+
+<ng-template #edit>
+  <tui-loader [showLoader]="isLoadingEdit" [size]="'xxl'" [overlay]="true" [textContent]="'Updating in Progress....'">
+    <br/>
+    <form [formGroup]="editForm" (ngSubmit)="submitCreateForm()">
+      <div class="tui-form__row">
+        <tui-input tuiTextfieldExampleText="Username" formControlName="username"
+        icon="tuiIconCard">
+          Username
+          <span class="tui-required"></span>
+        </tui-input>
+        <tui-field-error formControlName="username"></tui-field-error>
+      </div>
+      <div class="tui-form__row">
+        <tui-input tuiTextfieldExampleText="Email" formControlName="email" icon="tuiIconMail">
+          Email
+          <span class="tui-required"></span>
+        </tui-input>
+        <tui-field-error formControlName="email"></tui-field-error>
+      </div>
+      <div class="tui-form__row">
+        <tui-input tuiTextfieldExampleText="Full Name" formControlName="full_name" icon="tuiIconUser">
+          Full name
+          <span class="tui-required"></span>
+        </tui-input>
+        <tui-field-error formControlName="full_name"></tui-field-error>
+      </div>
+      <div class="tui-form__row">
+        <tui-input tuiTextfieldExampleText="Address" formControlName="address" icon="tuiIconPin">
+          Address
+          <span class="tui-required"></span>
+        </tui-input>
+        <tui-field-error formControlName="address"></tui-field-error>
+      </div>
+      <div class="tui-form__row">
+        <tui-input tuiTextfieldExampleText="Nomor HP" formControlName="phone_number" icon="tuiIconCallIn">
+          Nomor HP
+          <span class="tui-required"></span>
+        </tui-input>
+        <tui-field-error formControlName="phone_number"></tui-field-error>
+      </div>
+      <div class="tui-form__row">
+        <tui-input-file [formControl]="fileControl"
+        (change)="selectFile()" [accept]="'image/*'"></tui-input-file>
+      </div>
+      <div class="tui-form__buttons">
+        <button tuiButton class="tui-form__button tui-space_right-3" type="submit" size="m" icon="tuiIconCheckLarge"
+        [disabled]="!createForm.valid || chooseImage == false">
+          Submit
+        </button>
+        <button tuiButton type="button" size="m" icon="tuiIconRemoveLarge" appearance="warning" (click)="closeCreateDialog()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </tui-loader>
+</ng-template>
+
+<ng-template #delete>
+  <tui-loader [showLoader]="isLoadingDelete" [size]="'xxl'" [overlay]="true" [textContent]="'Deleting in Progress....'">
+    <br/>
+    <h4 class="tui-text__h4">Are you sure want to delete this {{ selectedUser.full_name }} data???</h4>
+    <br/>
+    <button class="tui-space_right-3" tuiButton type="button" (click)="deleteUsers()"
+    size="m" icon="tuiIconCheckLarge">Yes</button>
+    <button tuiButton type="button" size="m"
+    icon="tuiIconRemoveLarge" appearance="warning" (click)="closeDeleteDialog()">Cancel</button>
+  </tui-loader>
+</ng-template>
+
+<ng-template #photo>
+  <img [src]="selectedUserPhoto" loading="lazy" />
+</ng-template>

@@ -1,0 +1,114 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/css/dashboard.css';
+@import '~animate.css/animate.min';
+tui-wrapper[data-appearance='danger'] {
+  background: #c0392b;
+  color: #fff;
+}
+tui-wrapper[data-appearance='danger'][data-state='hovered'] {
+  background: #ff7675;
+}
+tui-wrapper[data-appearance='danger'][data-state='pressed'] {
+  background: #e17055;
+}
+tui-wrapper[data-appearance='danger'][data-state='disabled'] {
+  background: #eaecee;
+}
+
+tui-wrapper[data-appearance='info'] {
+  background: #22a6b3;
+  color: #fff;
+}
+tui-wrapper[data-appearance='info'][data-state='hovered'] {
+  background: #7ed6df;
+}
+tui-wrapper[data-appearance='info'][data-state='pressed'] {
+  background: #00d2d3;
+}
+tui-wrapper[data-appearance='info'][data-state='disabled'] {
+  background: #81ecec;
+}
+
+tui-wrapper[data-appearance='warning'] {
+  background: var(--tui-warning-fill);
+  color: #fff;
+}
+tui-wrapper[data-appearance='warning'][data-state='hovered'] {
+  background: #ffbe76;
+}
+tui-wrapper[data-appearance='warning'][data-state='pressed'] {
+  background: #fdcb6e;
+}
+tui-wrapper[data-appearance='warning'][data-state='disabled'] {
+  background: #eaecee;
+}
+
+tui-wrapper[data-appearance='detail'] {
+  background: var(--tui-support-02);
+  color: #fff;
+}
+tui-wrapper[data-appearance='detail'][data-state='hovered'] {
+  background: var(--tui-support-01);
+}
+tui-wrapper[data-appearance='detail'][data-state='pressed'] {
+  background: var(--tui-support-01);
+}
+tui-wrapper[data-appearance='detail'][data-state='disabled'] {
+  background: #eaecee;
+}
+
+tui-wrapper[data-appearance='danger'] {
+  background: var(--tui-support-06);
+  color: #fff;
+}
+tui-wrapper[data-appearance='danger'][data-state='hovered'] {
+  background: var(--tui-support-05);
+}
+tui-wrapper[data-appearance='danger'][data-state='pressed'] {
+  background: var(--tui-support-05);
+}
+tui-wrapper[data-appearance='danger'][data-state='disabled'] {
+  background: #eaecee;
+}
+
+tui-wrapper[data-appearance='komaru'] {
+  background: #30336b;
+  color: #fff;
+}
+tui-wrapper[data-appearance='komaru'][data-state='hovered'] {
+  background: #686de0;
+}
+tui-wrapper[data-appearance='komaru'][data-state='pressed'] {
+  background: #30336b;
+}
+tui-wrapper[data-appearance='komaru'][data-state='disabled'] {
+  background: #eaecee;
+}
+
+tui-wrapper[data-appearance='peace'] {
+  background: #7efff5;
+  color: #2f3542;
+}
+tui-wrapper[data-appearance='peace'][data-state='hovered'] {
+  background: #82ccdd;
+}
+tui-wrapper[data-appearance='peace'][data-state='pressed'] {
+  background: #60a3bc;
+}
+tui-wrapper[data-appearance='peace'][data-state='disabled'] {
+  background: #eaecee;
+}
+
+tui-wrapper[data-appearance='red-gelap'] {
+  background: rgb(176, 30, 30);
+  color: #fff;
+}
+tui-wrapper[data-appearance='red-gelap'][data-state='hovered'] {
+  background: #ff5252;
+}
+tui-wrapper[data-appearance='red-gelap'][data-state='pressed'] {
+  background: #ff5252;
+}
+tui-wrapper[data-appearance='red-gelap'][data-state='disabled'] {
+  background: rgba(176, 30, 30, 0.5);;
+}

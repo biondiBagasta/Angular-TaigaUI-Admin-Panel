@@ -1,6 +1,7 @@
 import { faCreditCard, faCubes, faPollH } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit } from '@angular/core';
 
+
 interface PiechartData {
   name: string;
   value: number;
@@ -12,7 +13,9 @@ interface PiechartData {
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    this.chartView = [innerWidth / 1.3, 400];
+  }
 
   faCubes = faCubes;
   faCreditCard = faCreditCard;
